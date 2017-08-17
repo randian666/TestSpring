@@ -6,6 +6,7 @@ import com.springmvc.demo.model.Notepad;
 import com.springmvc.demo.service.impl.Popsicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,9 @@ public class HelloController {
 	private Notepad notepad;
 	@Autowired
 	private CDPlayer cdPlayer;
+	@Value("#{dataTest.map['MapA']}") //SpEL表达式 #{...}
+	private String mapA;
+
 	@RequestMapping(value = "/print",method = RequestMethod.GET)
 	public String printWelcome(String name,ModelMap model) {
 		model.addAttribute("message", popsicle.getName());
