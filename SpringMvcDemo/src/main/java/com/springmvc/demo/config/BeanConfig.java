@@ -1,5 +1,6 @@
 package com.springmvc.demo.config;
 
+import com.springmvc.demo.audience.Audience;
 import com.springmvc.demo.model.CDPlayer;
 import com.springmvc.demo.model.Notepad;
 import com.springmvc.demo.service.CompactDisc;
@@ -13,9 +14,10 @@ import org.springframework.core.env.Environment;
 /**
  * Created by liuxun on 2017/8/17.
  */
-@Configuration
-@ComponentScan(basePackages = "com.springmvc.demo.*")
-@PropertySource("classpath:app.properties")
+@Configuration  //配置类标识注解
+@ComponentScan(basePackages = "com.springmvc.demo.*") //自动扫描注解
+@PropertySource("classpath:app.properties") //导入properties属性文件
+@EnableAspectJAutoProxy //启用AspectJ自动代理
 public class BeanConfig {
     /**
      * 注入外部值
@@ -56,5 +58,13 @@ public class BeanConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer placeholderConfigurer(){
         return new PropertySourcesPlaceholderConfigurer();
+    }
+    /**
+     * 声明切面bean
+     * @return
+     */
+    @Bean
+    public Audience audience(){
+        return new Audience();
     }
 }
