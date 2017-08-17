@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:app="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+        <bean id="audienceByXml" class="com.springmvc.demo.audience.AudienceByXml"></bean>
+        <aop:aspectj-autoproxy/> <!--启用@AspectJ注解驱动的切面-->
+        <app:config>
+                <aop:aspect ref="audienceByXml"><!-- 定义一个切面 -->
+                        <!-- 定义切入点 -->
+                    <aop:pointcut id="compactDiscPointcut" expression="execution(* com.springmvc.demo.service.CompactDisc.*(..))"></aop:pointcut>
+                        <!--定义一通知-->
+                        <aop:after pointcut-ref="compactDiscPointcut" method="after"/>
+                    <aop:around pointcut-ref="compactDiscPointcut"  method="timeAround"/>
+                </aop:aspect>
+        </app:config>
+</beans>

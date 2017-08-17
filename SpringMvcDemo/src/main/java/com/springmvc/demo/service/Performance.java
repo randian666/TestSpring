@@ -5,4 +5,5 @@ package com.springmvc.demo.service;
  */
 public interface Performance {
     void perform();
+    void performByName(String name);
 }

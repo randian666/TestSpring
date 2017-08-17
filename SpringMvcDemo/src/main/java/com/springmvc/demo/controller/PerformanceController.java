@@ -19,6 +19,7 @@ public class PerformanceController {
     public String doPer(String name,ModelMap model) {
         model.addAttribute("message", "Jay");
         jayPerformance.perform();
+        jayPerformance.performByName(name);
         return "hello";
     }
 }

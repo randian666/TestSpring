@@ -18,4 +18,15 @@ public class JayPerformance implements Performance{
         }
         System.out.println("Jay开始表演，唱歌、跳舞、嗨起来");
     }
+
+    @Override
+    public void performByName(String name) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(name+"开始表演，唱歌、跳舞、嗨起来");
+    }
+
 }

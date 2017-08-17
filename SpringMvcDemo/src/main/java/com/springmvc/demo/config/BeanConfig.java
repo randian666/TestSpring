@@ -59,12 +59,4 @@ public class BeanConfig {
     public static PropertySourcesPlaceholderConfigurer placeholderConfigurer(){
         return new PropertySourcesPlaceholderConfigurer();
     }
-    /**
-     * 声明切面bean
-     * @return
-     */
-    @Bean
-    public Audience audience(){
-        return new Audience();
-    }
 }
