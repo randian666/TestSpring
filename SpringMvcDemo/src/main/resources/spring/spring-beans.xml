@@ -3,15 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--构造器循环引用-->
-    <bean id="circleA" class="com.springmvc.demo.model.CircleA">
-        <constructor-arg index="0" ref="circleB"/>
-    </bean>
-    <bean id="circleB" class="com.springmvc.demo.model.CircleB">
-        <constructor-arg index="0" ref="circleC"/>
-    </bean>
-    <bean id="circleC" class="com.springmvc.demo.model.CircleC">
-        <constructor-arg index="0" ref="circleA"/>
-    </bean>
+    <!--<bean id="circleA" class="com.springmvc.demo.model.CircleA">-->
+        <!--<constructor-arg index="0" ref="circleB"/>-->
+    <!--</bean>-->
+    <!--<bean id="circleB" class="com.springmvc.demo.model.CircleB">-->
+        <!--<constructor-arg index="0" ref="circleC"/>-->
+    <!--</bean>-->
+    <!--<bean id="circleC" class="com.springmvc.demo.model.CircleC">-->
+        <!--<constructor-arg index="0" ref="circleA"/>-->
+    <!--</bean>-->
 
     <!--set循环引用 单例-->
     <!--<bean id="circleA" class="com.springmvc.demo.model.CircleA">-->

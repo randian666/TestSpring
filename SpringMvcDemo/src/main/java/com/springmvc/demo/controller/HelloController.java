@@ -14,12 +14,6 @@ public class HelloController {
 	@RequestMapping(value = "/print",method = RequestMethod.GET)
 	public String printWelcome(String name,ModelMap model) {
 		model.addAttribute("message", name);
-		System.out.println("asdf");
-		System.out.println("2323");
-		System.out.println("45454");
-		System.out.println("6666666");
-		System.out.println("7777777");
-		System.out.println("888888888");
 		return "hello";
 	}
 }
