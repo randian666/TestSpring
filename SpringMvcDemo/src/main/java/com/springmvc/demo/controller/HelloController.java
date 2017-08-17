@@ -1,5 +1,6 @@
 package com.springmvc.demo.controller;
 
+import com.springmvc.demo.model.CDPlayer;
 import com.springmvc.demo.model.CircleA;
 import com.springmvc.demo.model.Notepad;
 import com.springmvc.demo.service.impl.Popsicle;
@@ -18,10 +19,12 @@ public class HelloController {
 	private Popsicle popsicle;
 	@Autowired
 	private Notepad notepad;
-
+	@Autowired
+	private CDPlayer cdPlayer;
 	@RequestMapping(value = "/print",method = RequestMethod.GET)
 	public String printWelcome(String name,ModelMap model) {
 		model.addAttribute("message", popsicle.getName());
+		cdPlayer.doPlay();
 		System.out.println(notepad.getNotepad());
 		return "hello";
 	}

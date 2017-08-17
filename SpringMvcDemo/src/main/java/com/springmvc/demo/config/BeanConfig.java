@@ -4,18 +4,24 @@ import com.springmvc.demo.model.CDPlayer;
 import com.springmvc.demo.model.Notepad;
 import com.springmvc.demo.service.CompactDisc;
 import com.springmvc.demo.service.impl.SgtPeppers;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
 
 /**
  * Created by liuxun on 2017/8/17.
  */
 @Configuration
 @ComponentScan(basePackages = "com.springmvc.demo.*")
+@PropertySource("classpath:app.properties")
 public class BeanConfig {
-
+    /**
+     * 注入外部值
+     */
+    @Autowired
+    private Environment env;
     /**
      * Spring作用域
      * 单例(Singleton)：在整个应用中只创建bean的一个实例 默认作用域
@@ -36,6 +42,19 @@ public class BeanConfig {
     }
     @Bean
     public CompactDisc sgtPeppers(){
-        return new SgtPeppers();
+//        判断属性是否存在
+        boolean titleExists=env.containsProperty("disc.name");
+        //获取外部属性，并给定一个默认值
+
+        return new SgtPeppers(env.getProperty("disc.name","springframework"));
+    }
+
+    /**
+     * 为了使用占位符，我们必须要配置一个PropertySourcesPlaceholderConfigurer
+     * @return
+     */
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer placeholderConfigurer(){
+        return new PropertySourcesPlaceholderConfigurer();
     }
 }
