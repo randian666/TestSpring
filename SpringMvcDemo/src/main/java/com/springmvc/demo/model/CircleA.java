@@ -1,8 +1,5 @@
 package com.springmvc.demo.model;
 
-/**
- * Created by liuxun on 2017/8/15.
- */
 public class CircleA {
     private CircleB circleB;
     public CircleA(){
