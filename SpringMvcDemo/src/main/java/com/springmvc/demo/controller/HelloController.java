@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+
 @Controller
 @RequestMapping
 public class HelloController {
@@ -44,5 +46,13 @@ public class HelloController {
 	public String spittle(@PathVariable("spittleId") long spittleId,ModelMap model){
 		model.addAttribute("message", spittleId);
 		return "hello";
+	}
+	/**
+	 * 重定向
+	 * @return
+     */
+	@RequestMapping(value = "/register")
+	public String register(){
+		return "redirect:/spittles/"+333;
 	}
 }
