@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,10 +27,22 @@ public class HelloController {
 	private String mapA;
 
 	@RequestMapping(value = "/print",method = RequestMethod.GET)
-	public String printWelcome(String name,ModelMap model) {
+	public String print(String name,ModelMap model) {
 		model.addAttribute("message", popsicle.getName());
 		cdPlayer.doPlay();
 		System.out.println(notepad.getNotepad());
+		return "hello";
+	}
+
+	/**
+	 * springmvc restful风格接口
+	 * @param spittleId
+	 * @param model
+     * @return
+     */
+	@RequestMapping(value = "/spittles/{spittleId}",method = RequestMethod.GET)
+	public String spittle(@PathVariable("spittleId") long spittleId,ModelMap model){
+		model.addAttribute("message", spittleId);
 		return "hello";
 	}
 }

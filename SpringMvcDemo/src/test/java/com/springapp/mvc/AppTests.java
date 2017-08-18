@@ -35,8 +35,9 @@ public class AppTests {
 
     @Test
     public void simple() throws Exception {
+        //        status().isOk() //断言访问是否正常
         mockMvc.perform(get("/print"))
-                .andExpect(status().isOk());
+                    .andExpect(view().name("hello"));//断言控制器返回的是hello
     }
 
     /**
