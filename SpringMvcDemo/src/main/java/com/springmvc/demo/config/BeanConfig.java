@@ -50,7 +50,6 @@ public class BeanConfig {
 
         return new SgtPeppers(env.getProperty("disc.name","springframework"));
     }
-
     /**
      * 为了使用占位符，我们必须要配置一个PropertySourcesPlaceholderConfigurer
      * @return

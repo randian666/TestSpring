@@ -25,7 +25,7 @@ public class HelloController {
 	private Notepad notepad;
 	@Autowired
 	private CDPlayer cdPlayer;
-	@Value("#{dataTest.map['MapA']}") //SpEL表达式 #{...}
+	@Value("#{dataTest.map['MapA']}") //SpEL表达式 #{...} 直接访问另外类中的属性
 	private String mapA;
 
 	@RequestMapping(value = "/print",method = RequestMethod.GET)
