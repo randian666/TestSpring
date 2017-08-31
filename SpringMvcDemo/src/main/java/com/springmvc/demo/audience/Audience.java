@@ -12,13 +12,14 @@ import java.util.Arrays;
 
 /**
  * 定义切面
+ * springAOP 声明式定义
  * Created by liuxun on 2017/8/17.
  */
-@Aspect
+@Aspect  //启用
 @Component
 public class Audience {
-
-    @Pointcut("execution(** com.springmvc.demo.service.Performance.*(..))") //定义切入点
+    //定义切入点 value指定切入点的表达式，argNames指定命名切入点方法参数列表参数名字，可以有多个用“,”分隔，这次出单数将传递给通知方法同名参数。
+    @Pointcut(value = "execution(** com.springmvc.demo.service.Performance.*(..))")
     public void performance(){}
 
     /**
@@ -29,7 +30,7 @@ public class Audience {
     public void bookingByName(JoinPoint point){
         System.out.println("@Before：目标方法为：" +point.getSignature().getDeclaringTypeName() +
                 "." + point.getSignature().getName());
-        System.out.println("@Before：参数为：" + Arrays.toString(point.getArgs()));
+        System.out.println("@Before：目标方法的参数为：" + Arrays.toString(point.getArgs()));
         System.out.println("@Before：被织入的目标对象为：" + point.getTarget());
         System.out.println("表演之前，观众订票。。。");
     }
@@ -52,7 +53,7 @@ public class Audience {
     public void timePer(ProceedingJoinPoint joinPoint){
         try {
             long startTime = System.currentTimeMillis();
-            joinPoint.proceed();
+            joinPoint.proceed(); //执行被通知的方法
             System.out.println("表演结束，耗时："+(System.currentTimeMillis()-startTime)+"ms");
         } catch (Throwable throwable) {
             perAfterError();

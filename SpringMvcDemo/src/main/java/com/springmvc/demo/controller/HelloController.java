@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping
 public class HelloController {
 	@Autowired
-	@Qualifier("p")
+	@Qualifier("p") //限定符（Qualifier）限定自动装配的bean解决自动装配歧义性
 	private Popsicle popsicle;
 	@Autowired
 	private Notepad notepad;
@@ -34,6 +34,7 @@ public class HelloController {
 	private List<String> list;
 	@Value("#{dataTest.users}")
 	private List<User> users;
+
 
 	@RequestMapping(value = "/print",method = RequestMethod.GET)
 	public String print(String name,ModelMap model) {
