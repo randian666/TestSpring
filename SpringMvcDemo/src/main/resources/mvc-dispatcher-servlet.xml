@@ -27,6 +27,7 @@
         <property name="cache" value="false"/> <!--是否开启模板缓存-->
         <property name="dateToolAttribute" value="dateTool"/>  <!--时间类型处理工具-->
         <property name="numberToolAttribute" value="numberTool"/> <!--数字类型处理-->
+        <property name="contentType"><value>text/html;charset=UTF-8</value></property> <!--页面编码设置-->
     </bean>
     <import resource="spring/spring-beans.xml"/>
     <import resource="spring/spring-aop.xml"/>

@@ -1,12 +1,10 @@
 package com.springmvc.demo.config;
 
-import com.springmvc.demo.audience.Audience;
 import com.springmvc.demo.model.CDPlayer;
 import com.springmvc.demo.model.Notepad;
 import com.springmvc.demo.service.CompactDisc;
 import com.springmvc.demo.service.impl.SgtPeppers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;

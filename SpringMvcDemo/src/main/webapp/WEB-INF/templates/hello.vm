@@ -1,5 +1,27 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8" />
+</head>
 <body>
 <h1>${message}</h1>
+<!-- velocity 遍历-->
+#foreach( $info in $list)
+  <h2>${info}</h2>
+#end
+#foreach( $info in $users)
+<table>
+    <tr>
+        <td>${info.name}</td>
+        <td>#if($!info.age=='1')
+                男
+            #else
+                女
+            #end</td>
+        <td>${info.sex}</td>
+        <td>${info.address}</td>
+    </tr>
+</table>
+#end
 </body>
 </html>
