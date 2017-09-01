@@ -1,12 +1,14 @@
 package com.springmvc.demo.service.impl;
 
 import com.springmvc.demo.service.CompactDisc;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
  * Created by liuxun on 2017/8/17.
  */
 public class SgtPeppers implements CompactDisc {
+    private static Logger logger = Logger.getLogger(SgtPeppers.class);
     private String name;
     @Value("${disc.title}")//占位符表达式${...}
     private String title;
@@ -17,8 +19,8 @@ public class SgtPeppers implements CompactDisc {
 
     @Override
     public void play() {
-        System.out.println(name);
-        System.out.println(title);
+        logger.info(name);
+        logger.info(title);
 
     }
 }

@@ -1,6 +1,7 @@
 package com.springmvc.demo.service.impl;
 
 import com.springmvc.demo.service.Performance;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class JayPerformance implements Performance{
-
+    private static Logger logger = Logger.getLogger(SgtPeppers.class);
     @Override
     public void perform() {
         try {
@@ -16,7 +17,7 @@ public class JayPerformance implements Performance{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Jay开始表演，唱歌、跳舞、嗨起来");
+        logger.info("Jay开始表演，唱歌、跳舞、嗨起来");
     }
 
     @Override
@@ -26,7 +27,7 @@ public class JayPerformance implements Performance{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(name+"开始表演，唱歌、跳舞、嗨起来");
+        logger.info(name+"开始表演，唱歌、跳舞、嗨起来");
     }
 
 }

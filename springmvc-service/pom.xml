@@ -25,5 +25,10 @@
             <groupId>com.springapp</groupId>
             <artifactId>springmvc-dao</artifactId>
         </dependency>
+        <!-- Log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
     </dependencies>
 </project>
