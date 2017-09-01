@@ -29,6 +29,10 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:mvc-dispatcher-servlet.xml</param-value>
 		</init-param>
+		<init-param>
+			<param-name>spring.profiles.active</param-name>
+			<param-value>production</param-value>
+		</init-param>
 	</servlet>
 
 	<servlet-mapping>

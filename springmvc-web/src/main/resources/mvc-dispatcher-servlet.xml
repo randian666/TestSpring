@@ -8,27 +8,32 @@
 
     <context:component-scan base-package="com.springmvc.demo.*"/>
 
+    <!-- 境配置文件 -->
+    <context:property-placeholder location="classpath:prop/*.properties" />
     <!--JSP配置-->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
         <!--<property name="prefix" value="/WEB-INF/pages/"/>-->
         <!--<property name="suffix" value=".jsp"/>-->
     <!--</bean>-->
+    <beans>
+        <!-- velocity环境配置 -->
+        <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+            <!-- velocity配置文件路径  或者直接用velocityProperties属性 -->
+            <property name="configLocation" value="classpath:velocity.properties"/>
+            <!-- velocity模板路径 -->
+            <property name="resourceLoaderPath" value="/WEB-INF/templates/"/>
+        </bean>
+        <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+            <property name="prefix" value=""/>
+            <property name="suffix" value=".vm"/>
+            <property name="cache" value="false"/> <!--是否开启模板缓存-->
+            <property name="dateToolAttribute" value="dateTool"/>  <!--时间类型处理工具-->
+            <property name="numberToolAttribute" value="numberTool"/> <!--数字类型处理-->
+            <property name="contentType"><value>text/html;charset=UTF-8</value></property> <!--页面编码设置-->
+        </bean>
 
-    <!-- velocity环境配置 -->
-    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <!-- velocity配置文件路径  或者直接用velocityProperties属性 -->
-        <property name="configLocation" value="classpath:velocity.properties"/>
-        <!-- velocity模板路径 -->
-        <property name="resourceLoaderPath" value="/WEB-INF/templates/"/>
-    </bean>
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-        <property name="prefix" value=""/>
-        <property name="suffix" value=".vm"/>
-        <property name="cache" value="false"/> <!--是否开启模板缓存-->
-        <property name="dateToolAttribute" value="dateTool"/>  <!--时间类型处理工具-->
-        <property name="numberToolAttribute" value="numberTool"/> <!--数字类型处理-->
-        <property name="contentType"><value>text/html;charset=UTF-8</value></property> <!--页面编码设置-->
-    </bean>
-    <import resource="spring/spring-beans.xml"/>
-    <import resource="spring/spring-aop.xml"/>
+        <import resource="spring/spring-beans.xml"/>
+        <import resource="spring/spring-aop.xml"/>
+    </beans>
+
 </beans>

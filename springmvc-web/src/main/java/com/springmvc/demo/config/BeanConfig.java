@@ -14,7 +14,7 @@ import org.springframework.core.env.Environment;
  */
 @Configuration  //配置类标识注解
 @ComponentScan(basePackages = "com.springmvc.demo.*") //自动扫描注解
-@PropertySource("classpath:app.properties") //导入properties属性文件
+@PropertySource("classpath:prop/app.properties") //导入properties属性文件
 @EnableAspectJAutoProxy //启用AspectJ自动代理
 public class BeanConfig {
     /**
@@ -43,10 +43,8 @@ public class BeanConfig {
     @Bean
     public CompactDisc sgtPeppers(){
 //        判断属性是否存在
-        boolean titleExists=env.containsProperty("disc.name");
-        //获取外部属性，并给定一个默认值
-
-        return new SgtPeppers(env.getProperty("disc.name","springframework"));
+//        boolean titleExists=env.containsProperty("disc.name");
+        return new SgtPeppers(env.getProperty("disc.name"),env.getProperty("disc.title"));
     }
     /**
      * 为了使用占位符，我们必须要配置一个PropertySourcesPlaceholderConfigurer

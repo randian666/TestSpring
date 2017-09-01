@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
 public class SgtPeppers implements CompactDisc {
     private static Logger logger = Logger.getLogger(SgtPeppers.class);
     private String name;
-    @Value("${disc.title}")//占位符表达式${...}
     private String title;
 
-    public SgtPeppers(String name) {
+    public SgtPeppers(String name,String title) {
         this.name = name;
+        this.title=title;
     }
 
     @Override
