@@ -5,6 +5,7 @@ import com.springmvc.demo.domain.Notepad;
 import com.springmvc.demo.domain.User;
 import com.springmvc.demo.service.impl.CDPlayer;
 import com.springmvc.demo.service.impl.Popsicle;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +20,7 @@ import java.util.List;
 @Controller
 @RequestMapping
 public class HelloController {
+	private static Logger logger = Logger.getLogger(HelloController.class);
 	@Autowired
 	@Qualifier("p") //限定符（Qualifier）限定自动装配的bean解决自动装配歧义性
 	private Popsicle popsicle;
@@ -41,7 +43,7 @@ public class HelloController {
 		model.addAttribute("list",list);
 		model.addAttribute("users",users);
 		cdPlayer.doPlay();
-		System.out.println(notepad.getNotepad());
+		logger.info(notepad.getNotepad());
 		return "hello";
 	}
 

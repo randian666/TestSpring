@@ -17,6 +17,7 @@
         <spring.version>4.1.1.RELEASE</spring.version>
         <aspectj.version>1.6.11</aspectj.version>
         <com.springapp.version>1.0-SNAPSHOT</com.springapp.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
     <dependencyManagement>
     <dependencies>
@@ -100,6 +101,14 @@
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <!-- Log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
         <!-- Velocity模板 -->
         <dependency>
             <groupId>org.apache.velocity</groupId>
@@ -132,6 +141,7 @@
             <artifactId>springmvc-common</artifactId>
             <version>${com.springapp.version}</version>
         </dependency>
+
     </dependencies>
     </dependencyManagement>
     <build>

@@ -96,6 +96,11 @@
             <groupId>com.springapp</groupId>
             <artifactId>springmvc-common</artifactId>
         </dependency>
+        <!-- Log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <finalName>springmvc-web</finalName>
