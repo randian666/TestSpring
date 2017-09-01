@@ -13,12 +13,12 @@
 <table>
     <tr>
         <td>${info.name}</td>
-        <td>#if($!info.age=='1')
+        <td>#if($!info.sex=='1')
                 男
             #else
                 女
             #end</td>
-        <td>${info.sex}</td>
+        <td>${info.age}</td>
         <td>${info.address}</td>
     </tr>
 </table>
