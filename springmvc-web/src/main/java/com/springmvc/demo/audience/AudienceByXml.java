@@ -1,5 +1,6 @@
 package com.springmvc.demo.audience;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 
@@ -8,13 +9,14 @@ import org.aspectj.lang.ProceedingJoinPoint;
  * Created by liuxun on 2017/8/17.
  */
 public class AudienceByXml {
+    private static Logger logger = Logger.getLogger(AudienceByXml.class);
     /**
      * 目标方法执行完后通知
      * @param point
      */
     public void after(JoinPoint point){
         String msg=point.getSignature().getName()+"方法执行开始";
-        System.out.println(msg);
+        logger.info(msg);
     }
 
     /**
@@ -27,9 +29,9 @@ public class AudienceByXml {
             long startTime = System.currentTimeMillis();
             point.proceed();
             String msg=point.getSignature().getName()+"方法执行结束，耗时："+(System.currentTimeMillis()-startTime)+"ms";
-            System.out.println(msg);
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            logger.info(msg);
+        } catch (Throwable e) {
+            logger.error("timeAround error:",e);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.springmvc.demo.audience;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -15,6 +16,7 @@ import java.util.Arrays;
 @Aspect  //启用
 @Component
 public class Audience {
+    private static Logger logger = Logger.getLogger(Audience.class);
     //定义切入点 value指定切入点的表达式，argNames指定命名切入点方法参数列表参数名字，可以有多个用“,”分隔，这次出单数将传递给通知方法同名参数。
     @Pointcut(value = "execution(** com.springmvc.demo.service.Performance.*(..))")
     public void performance(){}
@@ -25,20 +27,20 @@ public class Audience {
      */
     @Before("performance()")
     public void bookingByName(JoinPoint point){
-        System.out.println("@Before：目标方法为：" +point.getSignature().getDeclaringTypeName() +
+        logger.info("@Before：目标方法为：" +point.getSignature().getDeclaringTypeName() +
                 "." + point.getSignature().getName());
-        System.out.println("@Before：目标方法的参数为：" + Arrays.toString(point.getArgs()));
-        System.out.println("@Before：被织入的目标对象为：" + point.getTarget());
-        System.out.println("表演之前，观众订票。。。");
+        logger.info("@Before：目标方法的参数为：" + Arrays.toString(point.getArgs()));
+        logger.info("@Before：被织入的目标对象为：" + point.getTarget());
+        logger.info("表演之前，观众订票。。。");
     }
 
     @Before("performance()")
     public void booking(){
-        System.out.println("表演之前，观众订票。。。");
+        logger.info("表演之前，观众订票。。。");
     }
     @Before("performance()")
     public void enterTheSite(){
-        System.out.println("表演之前，观众进入场地。。。");
+        logger.info("表演之前，观众进入场地。。。");
     }
     /**
      * 定义环绕通知
@@ -51,7 +53,7 @@ public class Audience {
         try {
             long startTime = System.currentTimeMillis();
             joinPoint.proceed(); //执行被通知的方法
-            System.out.println("表演结束，耗时："+(System.currentTimeMillis()-startTime)+"ms");
+            logger.info("表演结束，耗时："+(System.currentTimeMillis()-startTime)+"ms");
         } catch (Throwable throwable) {
             perAfterError();
             throwable.printStackTrace();
@@ -60,11 +62,11 @@ public class Audience {
 
     @AfterReturning("performance()")
     public void perAfter(){
-        System.out.println("表演之后，观众鼓掌。。。");
+        logger.info("表演之后，观众鼓掌。。。");
     }
     @AfterThrowing("performance()")
     public void perAfterError(){
-        System.out.println("表演出现意外之后，观众撤离，要求退款。。。");
+        logger.info("表演出现意外之后，观众撤离，要求退款。。。");
     }
 
 
