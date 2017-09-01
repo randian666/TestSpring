@@ -18,6 +18,8 @@
         <aspectj.version>1.6.11</aspectj.version>
         <com.springapp.version>1.0-SNAPSHOT</com.springapp.version>
         <log4j.version>1.2.17</log4j.version>
+        <!--指定JDK编译环境-->
+        <java.version>1.8</java.version>
     </properties>
     <dependencyManagement>
     <dependencies>
@@ -148,10 +150,12 @@
         <finalName>TestSpring</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>

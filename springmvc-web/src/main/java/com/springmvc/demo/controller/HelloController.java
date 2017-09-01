@@ -44,6 +44,7 @@ public class HelloController {
 		model.addAttribute("users",users);
 		cdPlayer.doPlay();
 		logger.info(notepad.getNotepad());
+		new Thread();
 		return "hello";
 	}
 
