@@ -1,6 +1,7 @@
 package com.springmvc.demo.controller;
 
 
+import com.google.gson.Gson;
 import com.springmvc.demo.domain.PageUtils;
 import com.springmvc.demo.domain.User;
 import com.springmvc.demo.service.UserService;
@@ -10,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -54,5 +56,18 @@ public class UserController {
 		PageUtils<User> userPages = userService.getUserPageList(page, PAGE_SIZE);
 		model.addAttribute("pageInfo",userPages);
 		return "user_view";
+	}
+
+	/**
+	 * 获取用户信息接口
+	 * @param page 页码
+	 * @return 返回json数据
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/getUserPageListByJson",method = RequestMethod.GET)
+	public String getUserPageListByJson(@RequestParam(value ="page",required=false,defaultValue="1") int page) {
+		PageUtils<User> userPages = userService.getUserPageList(page, PAGE_SIZE);
+		Gson g=new Gson();
+		return g.toJson(userPages);
 	}
 }
