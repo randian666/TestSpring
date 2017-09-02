@@ -32,8 +32,5 @@
             <property name="contentType"><value>text/html;charset=UTF-8</value></property> <!--页面编码设置-->
         </bean>
 
-        <import resource="spring/spring-beans.xml"/>
-        <import resource="spring/spring-aop.xml"/>
     </beans>
-
 </beans>

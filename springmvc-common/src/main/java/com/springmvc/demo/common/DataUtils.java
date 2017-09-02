@@ -27,7 +27,7 @@ public class DataUtils {
         list.add("List1");
         list.add("List2");
 
-        users= Arrays.asList(new User("张三",12,1,"中国"),new User("李白",23,0,"中国"),new User("蜘蛛侠",45,1,"美国"));
+        users= Arrays.asList(new User(1L,"张三",12,1,"中国"),new User(2L,"李白",23,0,"中国"),new User(3L,"蜘蛛侠",45,1,"美国"));
     }
 
     public List<User> getUsers() {

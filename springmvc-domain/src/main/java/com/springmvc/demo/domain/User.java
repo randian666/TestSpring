@@ -4,16 +4,28 @@ package com.springmvc.demo.domain;
  * Created by liuxun on 2017/8/31.
  */
 public class User {
+    private Long id;
     private String name;
-    private int age;
-    private int sex;
+    private Integer age;
+    private Integer sex;
     private String address;
+    public User(){
 
-    public User(String name, int age, int sex, String address) {
+    }
+    public User(Long id, String name, Integer age, Integer sex, String address) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.sex = sex;
         this.address = address;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -24,19 +36,19 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public int getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
