@@ -13,6 +13,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * 用户操作
+ * getUserList采用PageHelper插件实现分页
+ * getUserPageList手动实现物理分页
  * Created by LiuXun on 2017/9/2.
  */
 @Service("c")
@@ -28,7 +31,7 @@ public class UserServiceImpl implements UserService {
             // 取分页信息
             PageInfo<User> pageInfo = new PageInfo<User>(lists);
             long total = pageInfo.getTotal(); //获取总记录数
-            System.out.println("用户总记录数：" + total);
+            logger.info("用户总记录数：" + total);
             return lists;
         } catch (Exception e) {
             logger.error("getUserList error is:",e);
@@ -44,7 +47,7 @@ public class UserServiceImpl implements UserService {
             int offset=(pageSize-1)*currentPage;//起始页码
             List<User> lists=userMapper.getUserPageList(offset,pageSize);
             Integer total = userMapper.getUserPageListCount(); //获取总记录数
-            System.out.println("用户总记录数：" + total);
+            logger.info("用户总记录数：" + total);
             int totalPageNum = (total  +  pageSize  - 1) / pageSize;//总页数
             page.setCurrentPage(currentPage);
             page.setNumPerPage(lists.size());
