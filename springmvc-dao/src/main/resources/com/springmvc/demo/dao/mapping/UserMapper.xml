@@ -22,5 +22,14 @@
         <include refid="Column_list" />
         from user
     </select>
-
+    <select id="getUserPageList" resultMap="userResult">
+        SELECT
+        <include refid="Column_list" />
+        <![CDATA[
+          from user limit #{offset},#{rows}
+         ]]>
+    </select>
+    <select id="getUserPageListCount" resultType="java.lang.Integer">
+          SELECT COUNT(1) FROM user
+    </select>
 </mapper>

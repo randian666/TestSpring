@@ -1,5 +1,6 @@
 package com.springmvc.demo.service;
 
+import com.springmvc.demo.domain.PageUtils;
 import com.springmvc.demo.domain.User;
 
 import java.util.List;
@@ -9,4 +10,6 @@ import java.util.List;
  */
 public interface UserService {
     List<User> getUserList(int page,int pagesize);
+
+    PageUtils<User> getUserPageList(int currentPage, int pageSize);
 }

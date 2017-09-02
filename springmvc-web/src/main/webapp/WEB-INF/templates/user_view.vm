@@ -5,7 +5,7 @@
 </head>
 <body>
 
-#foreach( $info in $users)
+#foreach( $info in $pageInfo.obj)
 <table>
     <tr>
         <td>${info.name}</td>
@@ -19,5 +19,9 @@
     </tr>
 </table>
 #end
+当前页码：$!{pageInfo.currentPage}
+每页记录条数:$!{pageInfo.numPerPage}
+总记录条数:$!{pageInfo.totalCount}
+总页数:$!{pageInfo.totalPageNum}
 </body>
 </html>
