@@ -44,5 +44,10 @@
             <groupId>com.springapp</groupId>
             <artifactId>springmvc-dao</artifactId>
         </dependency>
+        <!-- mybatis 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
     </dependencies>
 </project>

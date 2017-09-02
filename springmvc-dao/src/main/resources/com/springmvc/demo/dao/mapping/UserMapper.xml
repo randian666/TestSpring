@@ -22,4 +22,5 @@
         <include refid="Column_list" />
         from user
     </select>
+
 </mapper>
