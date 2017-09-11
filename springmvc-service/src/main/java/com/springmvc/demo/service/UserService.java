@@ -12,4 +12,8 @@ public interface UserService {
     List<User> getUserList(int page,int pagesize);
 
     PageUtils<User> getUserPageList(int currentPage, int pageSize);
+
+    boolean insertUser(User user);
+
+    boolean deleteById(int id);
 }

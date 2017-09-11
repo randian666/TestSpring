@@ -61,4 +61,28 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public boolean insertUser(User user) {
+        try {
+            Integer result = userMapper.insertUser(user);
+            if (result>0)
+                return true;
+            else
+                return false;
+        } catch (Exception e) {
+            logger.error("insertUser error is:",e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        try {
+            userMapper.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            logger.error("deleteById error is:",e);
+        }
+        return false;
+    }
 }

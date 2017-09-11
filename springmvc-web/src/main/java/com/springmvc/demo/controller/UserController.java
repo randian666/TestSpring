@@ -70,4 +70,44 @@ public class UserController {
 		Gson g=new Gson();
 		return g.toJson(userPages);
 	}
+
+	/**
+	 * 添加用户页面
+	 * @return
+     */
+	@RequestMapping(value = "/toUserFrom",method = RequestMethod.GET)
+	public String toUserFrom() {
+		return "user_form";
+	}
+	/**
+	 * 插入用户信息数据接口
+	 * @return
+	 */
+	@RequestMapping(value = "/insertUser",method = RequestMethod.POST)
+	public String insertUser(User user,ModelMap model) {
+		boolean bool = userService.insertUser(user);
+		String msg="";
+		if (bool){
+			msg="保存成功！";
+		}else{
+			msg="保存失败！";
+		}
+		model.addAttribute("message",msg);
+		return "msg";
+	}
+
+	/**
+	 * 删除户信息接口
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/deleteById",method = RequestMethod.GET)
+	public String deleteById(@RequestParam(value ="id",required=false) int id) {
+		boolean result = userService.deleteById(id);
+		if (result){
+			return "del success";
+		}else{
+			return "del fail";
+		}
+	}
 }
