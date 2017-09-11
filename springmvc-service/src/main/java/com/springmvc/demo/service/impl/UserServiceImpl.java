@@ -18,7 +18,7 @@ import java.util.List;
  * getUserPageList手动实现物理分页
  * Created by LiuXun on 2017/9/2.
  */
-@Service("c")
+@Service
 public class UserServiceImpl implements UserService {
     private static Logger logger = Logger.getLogger(UserServiceImpl.class);
     @Resource
@@ -61,4 +61,28 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public boolean insertUser(User user) {
+        try {
+            Integer result = userMapper.insertUser(user);
+            if (result>0)
+                return true;
+            else
+                return false;
+        } catch (Exception e) {
+            logger.error("insertUser error is:",e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        try {
+            userMapper.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            logger.error("deleteById error is:",e);
+        }
+        return false;
+    }
 }

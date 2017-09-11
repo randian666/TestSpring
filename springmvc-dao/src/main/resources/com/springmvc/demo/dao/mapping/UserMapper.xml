@@ -32,4 +32,23 @@
     <select id="getUserPageListCount" resultType="java.lang.Integer">
           SELECT COUNT(1) FROM user
     </select>
+
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO  user
+            (
+            name,
+            sex,
+            address,
+            age
+            )
+            VALUES
+            (
+            #{name},
+            #{sex},
+            #{address},
+            #{age}
+            )
+        ]]>
+    </insert>
 </mapper>
