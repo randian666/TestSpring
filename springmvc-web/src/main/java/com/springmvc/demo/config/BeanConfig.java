@@ -10,6 +10,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 
 /**
+ * 通过java代码配置bean
  * Created by liuxun on 2017/8/17.
  */
 @Configuration  //配置类标识注解
